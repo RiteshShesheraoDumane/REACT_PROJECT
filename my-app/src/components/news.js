@@ -2,32 +2,301 @@ import React, { Component } from 'react';
 import NewsItem from './newsitem';  // Ensure correct capitalization
 
 export default class News extends Component {
+    articles= [
+   {
+    "source": {
+    "id": null,
+    "name": "Yahoo Entertainment"
+    },
+    "author": "Max A. Cherney",
+    "title": "Intel stock pops on plan for its foundry business to make custom chip for Amazon - Yahoo Finance",
+    "description": "Intel's foundry, or contract manufacturing business, has signed up Amazon's cloud services unit as a customer for making custom artificial intelligence chips...",
+    "url": "https://finance.yahoo.com/news/intel-aws-expand-strategic-collaboration-201944252.html",
+    "urlToImage": "https://media.zenfs.com/en/reuters-finance.com/ff49cc1c9a24849a3adae47c0334e16a",
+    "publishedAt": "2024-09-17T07:26:55Z",
+    "content": "(Reuters) - Intel's (INTC) foundry, or contract manufacturing business, has signed up Amazon's (AMZN) cloud services unit as a customer for making custom artificial intelligence chips, the companies … [+3008 chars]"
+    },
+   {
+    "source": {
+    "id": null,
+    "name": "BBC News"
+    },
+    "author": null,
+    "title": "Ryan Routh: What we know about Trump assassination attempt suspect - BBC.com",
+    "description": "He appears to have mixed politics and a history of support for Ukraine - as well as a number of legal issues.",
+    "url": "https://www.bbc.com/news/articles/c3611zjjnd2o",
+    "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/3fbe/live/a4e2e5b0-744a-11ef-b282-4535eb84fe4b.jpg",
+    "publishedAt": "2024-09-17T06:17:32Z",
+    "content": "Watch: Ros Atkins onthe apparent Trump assassination attempt\r\nThe suspect in an apparent assassination attempt against Donald Trump is a staunch supporter of Ukraine who was rejected by the country's… [+7504 chars]"
+    },
+   {
+    "source": {
+    "id": "the-washington-post",
+    "name": "The Washington Post"
+    },
+    "author": "Lizette Ortega",
+    "title": "Antibiotic resistance could cause over 39 million deaths by 2050, study says - The Washington Post",
+    "description": "Researchers have long flagged antimicrobial resistance as a public health concern, but this study is the first to analyze such trends around the world and over time.",
+    "url": "https://www.washingtonpost.com/science/2024/09/16/antibiotic-resistance-39-million-deaths-2050-study/",
+    "urlToImage": "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/SRD3Q6VFGQDEIVH2DFFUQ5JJJ4.JPG&w=1440",
+    "publishedAt": "2024-09-17T05:30:00Z",
+    "content": "More than 39 million people could die of antibiotic-resistant infections between now and 2050, according to a study published Monday in The Lancet.\r\nThe authors of the study forecast a nearly 70 perc… [+4237 chars]"
+    },
+   {
+    "source": {
+    "id": null,
+    "name": "YouTube"
+    },
+    "author": null,
+    "title": "Atlanta Falcons vs. Philadelphia Eagles Game Highlights | NFL 2024 Season Week 2 - NFL",
+    "description": "Enjoy the videos and music you love, upload original content, and share it all with friends, family, and the world on YouTube.",
+    "url": "https://www.youtube.com/",
+    "urlToImage": "https://www.youtube.com/img/desktop/yt_1200.png",
+    "publishedAt": "2024-09-17T05:17:43Z",
+    "content": null
+    },
+   {
+    "source": {
+    "id": null,
+    "name": "Rolling Stone"
+    },
+    "author": "Nancy Dillon",
+    "title": "Miley Cyrus Sued Over ‘Flowers,’ Accused of Copying Bruno Mars Song - Rolling Stone",
+    "description": "Miley Cyrus has been hit with a lawsuit alleging she copied portions of a Bruno Mars single when she wrote her Grammy-winning banger “Flowers.”",
+    "url": "http://www.rollingstone.com/music/music-news/miley-cyrus-flowers-copyright-lawsuit-bruno-mars-1235103892/",
+    "urlToImage": "https://www.rollingstone.com/wp-content/uploads/2024/09/miley-cyrus-sued-flowers-copyright.jpg?w=1600&h=900&crop=1",
+    "publishedAt": "2024-09-17T04:43:15Z",
+    "content": "Miley Cyrus has been hit with a new lawsuit alleging she and her fellow songwriters copied portions of a Bruno Mars single when they wrote her Grammy-winning banger “Flowers.”\r\nIn a new lawsuit filed… [+2083 chars]"
+    },
+   {
+    "source": {
+    "id": "the-washington-post",
+    "name": "The Washington Post"
+    },
+    "author": "Patrick Svitek, Mariana Alfaro",
+    "title": "Trump blames ‘rhetoric’ of Biden, Harris for possible assassination attempt - The Washington Post",
+    "description": "Former president Trump, who has a long history of inflammatory rhetoric and warned of a “bloodbath” if he loses in November, repeated the claim on his social media platform Truth Social.",
+    "url": "https://www.washingtonpost.com/politics/2024/09/16/trump-blames-biden-harris-rhetoric-potential-assassination-attempt/",
+    "urlToImage": "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/EQOAF4PMPEIZ3WDJ6KJRGQFL2Q.jpg&w=1440",
+    "publishedAt": "2024-09-17T04:06:12Z",
+    "content": "Former president Donald Trump on Monday blamed the rhetoric of President Joe Biden and Vice President Kamala Harris for the apparent assassination attempt he faced Sunday.\r\n[The suspected gunman] bel… [+5528 chars]"
+    },
+   {
+    "source": {
+    "id": "associated-press",
+    "name": "Associated Press"
+    },
+    "author": "ALI SWENSON",
+    "title": "Elon Musk has often inflamed politically tense moments, raising worries for the US election - The Associated Press",
+    "description": "As Election Day draws nearer, social media posts by X owner Elon Musk are raising concerns that he will use his immense platform to question the legitimacy of the vote in the U.S. presidential election and perhaps call for resistance if Republican nominee Don…",
+    "url": "https://apnews.com/article/elon-musk-x-election-voting-trump-misinformation-3479f2348f6ec47ce641ddf20fd6ce4e",
+    "urlToImage": "https://dims.apnews.com/dims4/default/519715d/2147483647/strip/true/crop/4626x2602+0+241/resize/1440x810!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2Fc6%2F53%2Fba307b749d569bda89d8423e0d72%2Ff57655d7624c4b6e81858ec67bedeb50",
+    "publishedAt": "2024-09-17T04:01:00Z",
+    "content": "NEW YORK (AP) Hours after an apparent attempt on Donald Trumps life over the weekend, Elon Musk took to his social platform X to post a thinking emoji and a comment that no one is even trying to assa… [+7845 chars]"
+    },
+   {
+    "source": {
+    "id": null,
+    "name": "9to5Mac"
+    },
+    "author": "Filipe Espósito",
+    "title": "Here’s how to check if your carrier already supports RCS on iPhone - 9to5Mac",
+    "description": "Apple on Monday released iOS 18 to the public, and one of the new features is support for Rich Communications...",
+    "url": "https://9to5mac.com/2024/09/16/heres-how-to-check-if-your-carrier-already-supports-rcs-on-iphone/",
+    "urlToImage": "https://i0.wp.com/9to5mac.com/wp-content/uploads/sites/6/2024/02/iMessage-antitrust-threat-removed.webp?resize=1200%2C628&quality=82&strip=all&ssl=1",
+    "publishedAt": "2024-09-17T03:43:00Z",
+    "content": "Apple on Monday released iOS 18 to the public, and one of the new features is support for Rich Communications Services, or RCS, in the Messages app. However, RCS support must be enabled by each carri… [+1576 chars]"
+    },
+   {
+    "source": {
+    "id": "associated-press",
+    "name": "Associated Press"
+    },
+    "author": "THE ASSOCIATED PRESS",
+    "title": "Israel-Hamas war latest: Israeli airstrikes kill 16 in Gaza, including 4 children, Palestinians say - The Associated Press",
+    "description": "Palestinian officials say Israeli airstrikes have killed 16 people in the Gaza Strip, including five women and four children. A strike early Monday flattened a home in the built-up Nuseirat refugee camp in central Gaza, killing at least 10 people. The Awda Ho…",
+    "url": "https://apnews.com/article/israel-hamas-war-latest-16-september-2024-a794f441dbfddebe87fd9b95c28008fb",
+    "urlToImage": "https://dims.apnews.com/dims4/default/4e776f3/2147483647/strip/true/crop/8640x4860+0+450/resize/1440x810!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2F24%2Fe4%2F44bb9c84b438f2c20aab2b0a659b%2F93e9f4742789458b98a103f86995dcd7",
+    "publishedAt": "2024-09-17T03:42:00Z",
+    "content": "Palestinian officials say Israeli airstrikes killed 16 people Monday in the Gaza Strip, including five women and four children. \r\nIsrael says it only targets militants and accuses Hamas and other arm… [+14332 chars]"
+    },
+   {
+    "source": {
+    "id": null,
+    "name": "CBS Sports"
+    },
+    "author": "",
+    "title": "NFL Week 2 grades: Falcons earn 'B+' for shocking comeback win over Eagles, Cowboys get 'F' for blowout loss - CBS Sports",
+    "description": "Here are the Week 2 grades for every team",
+    "url": "https://www.cbssports.com/nfl/news/nfl-week-2-grades-falcons-earn-b-for-shocking-comeback-win-over-eagles-cowboys-get-f-for-blowout-loss/",
+    "urlToImage": "https://sportshub.cbsistatic.com/i/r/2024/09/17/006f5452-cc4f-4132-8ea9-569a8065f1ba/thumbnail/1200x675/54317e8dcaeeee874852d81730772a30/kirk-cousins.jpg",
+    "publishedAt": "2024-09-17T03:40:00Z",
+    "content": "Welcome to the Week 2 grades!\r\nThe second week of the season is always a big one in the NFL, especially for 0-1 teams. If there's one thing you don't want to do, it's start the season with an 0-2 rec… [+1105 chars]"
+    },
+   {
+    "source": {
+    "id": null,
+    "name": "BBC News"
+    },
+    "author": null,
+    "title": "Jane's Addiction cancel remaining tour dates after on-stage brawl - BBC.com",
+    "description": "The US band say they have made the \"difficult decision to take some time away as a group\" following the fight.",
+    "url": "https://www.bbc.com/news/articles/c4g55y1kk5lo",
+    "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/c8fe/live/74967750-746d-11ef-8c1a-df523ba43a9a.jpg",
+    "publishedAt": "2024-09-17T02:40:18Z",
+    "content": "American band Jane's Addiction have cancelled the remaining dates of their tour, days after an on-stage brawl in Boston, Massachusetts.\r\nOn Friday night, the band - which hails from Los Angeles - cut… [+1478 chars]"
+    },
+   {
+    "source": {
+    "id": null,
+    "name": "BBC News"
+    },
+    "author": null,
+    "title": "Brain changes during pregnancy revealed in detailed map - BBC.com",
+    "description": "Repeated scans during one woman's pregnancy show brain changes never charted before.",
+    "url": "https://www.bbc.com/news/articles/ckgvvn0q8e2o",
+    "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/0bc5/live/ef1e08f0-74cf-11ef-b282-4535eb84fe4b.jpg",
+    "publishedAt": "2024-09-17T02:12:07Z",
+    "content": "Major tracts of white matter - which provide connections between different parts of the brain - show evidence of increasing during pregnancy\r\nPregnancy brain really does exist, according to one of th… [+3342 chars]"
+    },
+   {
+    "source": {
+    "id": "axios",
+    "name": "Axios"
+    },
+    "author": "Axios",
+    "title": "New spending fight: Secret Service funding - Axios",
+    "description": null,
+    "url": "https://www.axios.com/2024/09/17/secret-service-funding-congress",
+    "urlToImage": null,
+    "publishedAt": "2024-09-17T01:39:14Z",
+    "content": null
+    },
+   {
+    "source": {
+    "id": null,
+    "name": "NDTV News"
+    },
+    "author": null,
+    "title": "Benjamin Netanyahu Announces \"Updated War Goals\" Against, Hamas, Hezbollah - NDTV",
+    "description": "NDTV.com: India, Business, Bollywood, Cricket, Video and Breaking News",
+    "url": "https://www.ndtv.com",
+    "urlToImage": "https://cdn.ndtv.com/common/images/ogndtv.png",
+    "publishedAt": "2024-09-17T00:59:28Z",
+    "content": null
+    },
+   {
+    "source": {
+    "id": "cbs-news",
+    "name": "CBS News"
+    },
+    "author": "Nikole Killion",
+    "title": "Springfield, Ohio, schools ramp up security after false claims about Haitian immigrants prompt bomb threats - CBS News",
+    "description": "Gov. Mike DeWine announced Monday he's sending three dozen state troopers to be stationed around Springfield schools.",
+    "url": "https://www.cbsnews.com/news/springfield-ohio-security-false-claims-about-haitian-immigrants-bomb-threats/",
+    "urlToImage": "https://assets3.cbsnewsstatic.com/hub/i/r/2024/09/17/61d9ed7f-2afd-4db1-a3d9-e294a1d387d0/thumbnail/1200x630/714712cfd8463d595f247b29a602e5e8/gettyimages-2170807823.jpg?v=d2d77bee90bcafa285fd6d60bd8b3612",
+    "publishedAt": "2024-09-17T00:56:02Z",
+    "content": "The city of Springfield, Ohio, is stepping up security as viral, false claims about Haitian immigrants stealing and eating pets continue to circulate after being amplified by former President Donald … [+3877 chars]"
+    },
+   {
+    "source": {
+    "id": "associated-press",
+    "name": "Associated Press"
+    },
+    "author": "JUAN A. LOZANO",
+    "title": "Massive pipeline fire burning near Houston began after a vehicle struck a valve, officials say - The Associated Press",
+    "description": "Officials say a massive pipeline fire that has burned for hours near Houston began after vehicle struck an above-ground valve after driving through a fence. Officials in Deer Park said Monday that police and local FBI agents have found no evidence of “terrori…",
+    "url": "https://apnews.com/article/pipeline-fire-texas-659141b9f88ed2b324c36fce2735746f",
+    "urlToImage": "https://dims.apnews.com/dims4/default/05a89bd/2147483647/strip/true/crop/5000x2813+0+260/resize/1440x810!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2F92%2F96%2Fae890d96a8b5bbd2c989f0156af2%2F60d10239d3b441c1b4e21dd83efa03f2",
+    "publishedAt": "2024-09-17T00:55:00Z",
+    "content": "DEER PARK, Texas (AP) A towering flame gradually subsided Tuesday morning in the aftermath of a massive pipeline explosion after a vehicle drove through a fence and struck an above-ground valve, offi… [+5468 chars]"
+    },
+   {
+    "source": {
+    "id": null,
+    "name": "KOIN.com"
+    },
+    "author": "Josh Cozart",
+    "title": "Partial lunar eclipse of PNW’s super full harvest moon Tuesday: Here’s what you need to know - KOIN.com",
+    "description": "A partial lunar eclipse will overcome Tuesday’s super harvest moon over the Pacific Northwest.",
+    "url": "https://www.koin.com/weather/partial-lunar-eclipse-of-pnws-super-full-harvest-moon-tuesday-heres-what-you-need-to-know/",
+    "urlToImage": "https://www.koin.com/wp-content/uploads/sites/10/2021/09/GettyImages-857986718.jpg?w=1280",
+    "publishedAt": "2024-09-17T00:32:31Z",
+    "content": "Rainy weather will make it difficult to see this year's Full Harvest Supermoon partial eclipsePORTLAND, Ore. (KOIN) — A partial lunar eclipse will overcome Tuesday’s super harvest moon over the Pacif… [+1220 chars]"
+    },
+   {
+    "source": {
+    "id": null,
+    "name": "Yahoo Entertainment"
+    },
+    "author": "Ryan Young",
+    "title": "Cowboys DC Mike Zimmer, star Micah Parsons on different pages about defensive issues after Saints blowout loss - Yahoo Sports",
+    "description": "The Cowboys gave up six straight touchdown drives in their blowout loss to the Saints on Sunday.",
+    "url": "https://sports.yahoo.com/cowboys-dc-mike-zimmer-star-micah-parsons-on-different-pages-about-defensive-issues-after-blowout-loss-vs-saints-000908330.html",
+    "urlToImage": "https://s.yimg.com/ny/api/res/1.2/nYT2aB5NSjTam226Y6Z3Fw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD04MDA-/https://s.yimg.com/os/creatr-uploaded-images/2024-09/4c765d80-7486-11ef-8d2e-123adee56311",
+    "publishedAt": "2024-09-17T00:09:00Z",
+    "content": "The Cowboys' defense doesnt seem to be on the same page after Dallas' blowout home loss on Sunday afternoon.\r\nWhile the Cowboys can agree that there is an issue or issues to be fixed the New Orleans … [+2105 chars]"
+    },
+   {
+    "source": {
+    "id": null,
+    "name": "Deadline"
+    },
+    "author": "Peter White",
+    "title": "FX Boss John Landgraf On “Thrilling” Emmy Night For ‘Shōgun’ & ‘The Bear’ - Deadline",
+    "description": "FX boss John Landgraf Q&A about the “thrilling” Emmy Night for ‘Shōgun’ and ‘The Bear’ and dishes on future seasons following Disney’s record-breaking night.",
+    "url": "http://deadline.com/2024/09/fx-john-landgraf-emmys-shogun-the-bear-1236091116/",
+    "urlToImage": "https://deadline.com/wp-content/uploads/2024/09/MixCollage-16-Sep-2024-05-00-PM-3290.jpg?w=1000",
+    "publishedAt": "2024-09-17T00:05:00Z",
+    "content": "John Landgraf says that there’s still “magic” in the television business as evidenced by the likes of actors such as The Bear’s Liza Colón-Zayas beating Carol Burnett and Meryl Streep to win her firs… [+11794 chars]"
+    },
+   {
+    "source": {
+    "id": "techcrunch",
+    "name": "TechCrunch"
+    },
+    "author": "Maxwell Zeff",
+    "title": "Slack is turning into an AI agent hub. Should it? - TechCrunch",
+    "description": "The head of Slack, Denise Dresser, tells TechCrunch she is shifting the business chat platform into a \"work operating system,\" specifically by making",
+    "url": "https://techcrunch.com/2024/09/16/slack-is-turning-into-an-ai-agent-hub-should-it/",
+    "urlToImage": "https://techcrunch.com/wp-content/uploads/2024/09/GettyImages-2097488963.jpg?resize=1200,800",
+    "publishedAt": "2024-09-17T00:01:37Z",
+    "content": "The head of Slack, Denise Dresser, tells TechCrunch she is shifting the business chat platform into a “work operating system,” specifically by making Slack a hub for AI applications from Salesforce, … [+4577 chars]"
+    }
+    ]
+    constructor(props) {
+        super(props);
+        console.log("I am the constructor");
+        this.state = {
+            articles: this.articles, // Use colon instead of equals sign
+            loading: false
+        };
+    }
+    
+    
   render() {
     return (
       <div className="container my-3">
         <h2>Novanews Top Headlines</h2>
+       
         <div className="row">
-          <div className="col-md-4 mb-4">
-            <NewsItem title="mytitle" description="this is my desc"/>
-          </div>
-          <div className="col-md-4 mb-4">
-            <NewsItem title="mytitle" description="this is my desc"/>
-          </div>
-          <div className="col-md-4 mb-4">
-            <NewsItem title="mytitle" description="this is my desc"/>
-          </div>
+        {this.state.articles && this.state.articles.map((element) => {
+  return (
+    <div className="col-md-4 mb-4" key={element.url}>
+      <NewsItem 
+        title={element.title ? element.title.slice(0, 46)+"..." : "No Title"} 
+        description={element.description ? element.description.slice(0, 88)+"...": "No Description"} 
+        imageUrl={element.urlToImage || "default-image-url.jpg"} 
+        newsurl={element.url} 
+      />
+    </div>
+  );
+})}
+
+         
+         
         </div>
-        <div className="row">
-          <div className="col-md-4 mb-4">
-            <NewsItem title="mytitle" description="this is my desc"/>
-          </div>
-          <div className="col-md-4 mb-4">
-            <NewsItem title="mytitle" description="this is my desc"/>
-          </div>
-          <div className="col-md-4 mb-4">
-            <NewsItem title="mytitle" description="this is my desc"/>
-          </div>
-        </div>
+        
       </div>
     );
   }
