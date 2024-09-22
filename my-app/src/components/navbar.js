@@ -4,7 +4,7 @@ import './Navbar.css'; // Create and use this CSS file for custom styles
 export default class Navbar extends Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark custom-navbar">
+      <nav className="navbar navbar-expand-lg  my-0 fixed-top  navbar-dark bg-dark custom-navbar">
         <div className="container-fluid">
           <a className="navbar-brand animated-brand" href="/">NovaNews</a>
           <button
