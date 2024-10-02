@@ -1,84 +1,101 @@
 import React, { Component } from "react";
-import NewsItem from "./newsitem"; // Ensure correct capitalization
-import Spinner from "./spinner"; // Ensure correct import for Spinner component
-import InfiniteScroll from "react-infinite-scroll-component"; // Assuming you're using InfiniteScroll
+import NewsItem from "./newsitem";
+import Spinner from "./spinner";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export default class News extends Component {
   static defaultProps = {
-    country: "in",
+    country: "us", // Default to United States
     pageSize: 10,
+    category: "general",
   };
 
   constructor(props) {
     super(props);
-
-    // State initialization
     this.state = {
-      articles: [], // Holds the fetched articles from the API
-      loading: false, // Tracks whether data is being fetched
-      page: 1, // Current page of news articles
-      pageSize: 12, // Number of articles per page (this could be passed as a prop for flexibility)
-      totalResults: 0, // Total number of articles returned by the API
+      articles: [],
+      loading: false,
+      page: 1,
+      totalResults: 0,
+      error: null, // State for error handling
     };
   }
 
+  // Fetch news when the component mounts
   async componentDidMount() {
     this.fetchNews();
   }
 
+  // Re-fetch news when the country or category changes
+  componentDidUpdate(prevProps) {
+    if (prevProps.country !== this.props.country || prevProps.category !== this.props.category) {
+      this.setState({ page: 1, articles: [] }, () => {
+        this.fetchNews();
+      });
+    }
+  }
+
+  // Fetch news function
   fetchNews = async () => {
     const { page, pageSize } = this.state;
+    const { category, country } = this.props; // Get country from props
 
-    // Set loading to true before fetching data and update loading progress
-    this.setState({ loading: true });
-    this.props.setProgress(10); // Initial progress
+    this.setState({ loading: true, error: null }); // Reset loading state
+    this.props.setProgress(10);
 
     try {
-      let url = `https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=95564f4da2254849a7c07a66445ae3e6&page=${page}&pageSize=${pageSize}`;
+      let url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=95564f4da2254849a7c07a66445ae3e6&page=${page}&pageSize=${pageSize}`;
       let data = await fetch(url);
-      this.props.setProgress(50); // Progress after fetching the data
+      this.props.setProgress(50);
 
       let parsedData = await data.json();
-      this.props.setProgress(80); // Progress after parsing the data
+      this.props.setProgress(80);
+
+      if (parsedData.status !== "ok") {
+        throw new Error(parsedData.message);
+      }
 
       this.setState({
-        articles: parsedData.articles || [], // Ensure articles is always an array
+        articles: parsedData.articles || [],
         totalResults: parsedData.totalResults,
-        loading: false, // Set loading to false after data is fetched
+        loading: false,
       });
-
-      this.props.setProgress(100); // Progress complete
+      this.props.setProgress(100);
     } catch (error) {
       console.error("Error fetching data:", error);
-      this.setState({ loading: false });
-      this.props.setProgress(100); // Ensure progress completes even in case of failure
+      this.setState({ loading: false, error: "Failed to load news. Please try again." });
+      this.props.setProgress(100);
     }
   };
 
+  // Fetch more news when scrolling
   fetchMoreData = async () => {
     const { page, pageSize } = this.state;
+    const { category, country } = this.props; // Get country from props
 
-    try {
-      let url = `https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=95564f4da2254849a7c07a66445ae3e6&page=${page + 1}&pageSize=${pageSize}`;
-      let data = await fetch(url);
-      let parsedData = await data.json();
+    let url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=95564f4da2254849a7c07a66445ae3e6&page=${page + 1}&pageSize=${pageSize}`;
+    let data = await fetch(url);
+    let parsedData = await data.json();
 
-      this.setState({
-        articles: this.state.articles.concat(parsedData.articles || []), // Append new articles to existing ones
-        totalResults: parsedData.totalResults,
-        page: this.state.page + 1,
-      });
-    } catch (error) {
-      console.error("Error fetching more data:", error);
-    }
+    this.setState({
+      articles: this.state.articles.concat(parsedData.articles || []),
+      totalResults: parsedData.totalResults,
+      page: this.state.page + 1,
+    });
   };
 
   render() {
+    const { error, loading } = this.state; // Destructure error and loading
+
     return (
       <div className="container my-3">
-        <h2>Novanews Top Headlines</h2>
+        <h2 className="text-center">
+          Novanews - {this.props.category.charAt(0).toUpperCase() + this.props.category.slice(1)} Headlines
+        </h2>
 
-        {/* InfiniteScroll component */}
+        {error && <div className="alert alert-danger">{error}</div>} {/* Display error message */}
+
+        {/* Infinite Scroll */}
         <InfiniteScroll
           dataLength={this.state.articles.length}
           next={this.fetchMoreData}
@@ -87,26 +104,17 @@ export default class News extends Component {
         >
           <div className="container">
             <div className="row">
-              {!this.state.loading &&
-                this.state.articles.length > 0 &&
+              {!loading &&
                 this.state.articles.map((element) => (
                   <div className="col-md-4 mb-4" key={element.url}>
                     <NewsItem
-                      title={
-                        element.title
-                          ? element.title.slice(0, 46) + "..."
-                          : "No Title"
-                      }
-                      description={
-                        element.description
-                          ? element.description.slice(0, 88) + "..."
-                          : "No Description"
-                      }
+                      title={element.title ? element.title.slice(0, 46) + "..." : "No Title"}
+                      description={element.description ? element.description.slice(0, 88) + "..." : "No Description"}
                       imageUrl={element.urlToImage || "default-image-url.jpg"}
                       newsurl={element.url}
                       author={element.author}
                       date={element.publishedAt}
-                      source={element.source.name} // Pass the source here
+                      source={element.source.name}
                     />
                   </div>
                 ))}
