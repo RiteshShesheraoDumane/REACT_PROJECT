@@ -1,0 +1,90 @@
+.landing-page {
+    height: 100vh; /* Full viewport height */
+    background: #000; /* Background color */
+    position: relative; /* For overlay positioning */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: center;
+    align-items: center; /* Center content */
+    text-align: center; /* Center text */
+}
+
+.welcome-text {
+    font-size: 4rem; /* Large font size */
+    font-weight: bold; /* Bold text */
+    color: white; /* White text */
+    margin-bottom: 20px; /* Spacing below */
+}
+
+.news-nexus {
+    font-size: 6rem; /* Large font size for NewsNexus */
+    font-weight: bold; /* Bold text */
+    color: #FFD700; /* Gold color for effect */
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8), /* 3D effect */
+                 -1px -1px 3px rgba(0, 0, 0, 0.5),
+                 1px 1px 3px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px; /* Spacing below */
+}
+
+.blockquote {
+    font-size: 1.5rem; /* Size for quote */
+    color: white; /* Color for quote */
+    margin-bottom: 20px; /* Spacing below */
+}
+
+.btn {
+    font-size: 1.2rem; /* Button text size */
+    padding: 10px 20px; /* Padding for button */
+    background-color: #007bff; /* Button color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    color: white; /* White text color */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+.news-nexus{
+    color: rgb(241, 109, 109);
+    font-size: 150px;
+    font-family: emoji;
+}
+.landing-page {
+    height: 100vh; /* Full viewport height */
+    background: url('./image.png') no-repeat center center; /* Set background image */
+    background-size: cover; /* Cover the entire area */
+    position: relative; /* For overlay positioning */
+}
+.news-nexus {
+    font-size: 10rem; /* Large font size for NewsNexus */
+    font-weight: bold; /* Bold text */
+    color: rgb(255, 0, 0); /* Main text color */
+    text-shadow: 
+        0 0 15px rgba(0, 0, 0, 0.9), /* Strong deep shadow */
+        0 0 20px rgba(255, 0, 0, 0.8), /* Deep red glow */
+        0 0 30px rgba(255, 0, 0, 0.7), /* Brighter red glow */
+        0 0 40px rgba(255, 255, 255, 0.2), /* Soft white edge */
+        0 0 50px rgba(255, 255, 255, 0.1); /* Fainter soft edge */
+}
+.btn:hover {
+    background-color: #0056b3; /* Darken the button on hover */
+}
+.blockquote {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    padding: 10px 20px; /* Padding around the quote */
+    border-radius: 10px; /* Rounded corners */
+    display: inline-block; /* Fit the background to the content */
+    margin: 20px 0; /* Add some margin for spacing */
+    font-style: italic; /* Italic style for the quote */
+    font-size: 1.5rem; /* Increase font size for emphasis */
+}

@@ -1,54 +1,83 @@
 import './App.css';
 import React, { Component } from 'react';
+import Landing from './components/landing';
 import Navbar from './components/navbar';
 import News from './components/news';
+import About from './components/about'; 
 import LoadingBar from 'react-top-loading-bar';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-export default class App extends Component {
-  state = {
-    progress: 0,
-    category: 'general', // Default category
-    country: 'us', // Default country
-  };
+class App extends Component {
+    state = {
+        progress: 0,
+        category: 'general',
+        country: 'us',
+        showComponents: false,
+        value: true // Track if the landing page should be shown
+    };
 
-  // Function to set loading bar progress
-  setProgress = (progress) => {
-    this.setState({ progress });
-  };
+    componentDidMount() {
+        const hasStarted = sessionStorage.getItem('hasStarted');
+        if (hasStarted === 'true') {
+            this.setState({ showComponents: true, value: false });
+        }
+    }
 
-  // Function to handle category change
-  handleCategoryChange = (newCategory) => {
-    this.setState({ category: newCategory });
-  };
+    setProgress = (progress) => {
+        this.setState({ progress });
+    };
 
-  // Function to handle country change
-  handleCountryChange = (newCountry) => {
-    this.setState({ country: newCountry });
-  };
+    handleCategoryChange = (newCategory) => {
+        this.setState({ category: newCategory });
+    };
 
-  render() {
-    return (
-      <div>
-        {/* Pass the handleCategoryChange and handleCountryChange to Navbar */}
-        <Navbar 
-          onCategoryChange={this.handleCategoryChange} 
-          onCountryChange={this.handleCountryChange} 
-        />
-        
-        {/* Loading bar to show progress */}
-        <LoadingBar
-          color="#f11946"
-          progress={this.state.progress}
-          onLoaderFinished={() => this.setProgress(0)}
-        />
-        
-        {/* Pass selected category and country to News component */}
-        <News
-          setProgress={this.setProgress}
-          category={this.state.category} // Pass selected category
-          country={this.state.country}   // Pass selected country
-        />
-      </div>
-    );
-  }
+    handleCountryChange = (newCountry) => {
+        this.setState({ country: newCountry });
+    };
+
+    handleGetStarted = () => {
+        this.setState({ showComponents: true, value: false }); 
+        sessionStorage.setItem('hasStarted', 'true'); // Store the state only for the current session
+    };
+
+    render() {
+        return (
+            <Router>
+                <div>
+                    {/* Show Landing page only if value is true */}
+                    {this.state.value && (
+                        <Landing onGetStarted={this.handleGetStarted} />
+                    )}
+                    {/* Show main components if showComponents is true */}
+                    {this.state.showComponents && (
+                        <>
+                            <Navbar 
+                                onCategoryChange={this.handleCategoryChange} 
+                                onCountryChange={this.handleCountryChange} 
+                            />
+                            <LoadingBar
+                                color="#f11946"
+                                progress={this.state.progress}
+                                onLoaderFinished={() => this.setProgress(0)}
+                            />
+                            <Routes>
+                                {/* Route for Home with News component */}
+                                <Route path="/" element={
+                                    <News
+                                        setProgress={this.setProgress}
+                                        category={this.state.category}
+                                        country={this.state.country}
+                                    />
+                                } />
+                                {/* Route for About component */}
+                                <Route path="/about" element={<About />} />
+                            </Routes>
+                        </>
+                    )}
+                </div>
+            </Router>
+        );
+    }
 }
+
+export default App;

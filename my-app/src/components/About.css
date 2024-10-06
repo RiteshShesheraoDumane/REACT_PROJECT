@@ -1,0 +1,53 @@
+.about-page {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.about-navbar {
+    background-color: #f11946;
+    padding: 5px 5px;
+    color: white;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    width: 100%; /* Makes the navbar full-width */
+    display: flex;
+    justify-content: center; /* Centers the navbar items horizontally */
+}
+
+.about-navbar ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.about-navbar li {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.about-navbar li:hover {
+    text-decoration: underline;
+}
+
+.about-content {
+    margin-top: 20px;
+}
+
+.about-content h2 {
+    color: #333;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.about-content ul {
+    list-style-type: square;
+    margin-left: 20px;
+}
+
+.about-content ul li {
+    margin-bottom: 0px;
+}
