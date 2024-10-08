@@ -4,8 +4,10 @@ import Landing from './components/landing';
 import Navbar from './components/navbar';
 import News from './components/news';
 import About from './components/about'; 
+
 import LoadingBar from 'react-top-loading-bar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Contact from './components/contact';
 
 class App extends Component {
     state = {
@@ -71,6 +73,7 @@ class App extends Component {
                                 } />
                                 {/* Route for About component */}
                                 <Route path="/about" element={<About />} />
+                                <Route path="/contact" element={<Contact />} />
                             </Routes>
                         </>
                     )}
