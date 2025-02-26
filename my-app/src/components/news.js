@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import NewsItem from "./newsitem";
 import Spinner from "./spinner";
+
 import InfiniteScroll from "react-infinite-scroll-component";
 
 export default class News extends Component {
@@ -44,7 +45,10 @@ export default class News extends Component {
     this.props.setProgress(10);
 
     try {
-      let url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=95564f4da2254849a7c07a66445ae3e6&page=${page}&pageSize=${pageSize}`;
+      const API_KEY = process.env.REACT_APP_API_KEY;
+    
+    
+      let url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${API_KEY}&page=${page}&pageSize=${pageSize}`;
       let data = await fetch(url);
       this.props.setProgress(50);
 
