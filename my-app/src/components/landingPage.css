@@ -102,20 +102,20 @@
 /* Extra Small screens (very small phones) */
 @media (max-width: 480px) {
     .welcome-text {
-        font-size: 2rem;
+        font-size: 1rem;
     }
 
     .news-nexus {
-        font-size: 4rem;
+        font-size: 3rem;
     }
 
     .blockquote {
-        font-size: 0.9rem;
-        padding: 8px 15px;
+        font-size: 0.7rem;
+        padding: 6px 10px;
     }
 
     .btn {
-        font-size: 0.9rem;
+        font-size: 0.6rem;
         padding: 6px 14px;
     }
 }
