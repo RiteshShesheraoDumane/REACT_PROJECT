@@ -43,7 +43,6 @@ export default class News extends Component {
 
     this.setState({ loading: true, error: null }); // Reset loading state
     this.props.setProgress(10);
-
     try {
  
       let url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=95564f4da2254849a7c07a66445ae3e6&page=${page}&pageSize=${pageSize}`;
