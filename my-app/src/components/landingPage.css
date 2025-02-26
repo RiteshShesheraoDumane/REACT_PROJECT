@@ -61,7 +61,7 @@
 }
 .landing-page {
     height: 100vh; /* Full viewport height */
-    background: url('./image.png') no-repeat center center; /* Set background image */
+ /* Set background image */
     background-size: cover; /* Cover the entire area */
     position: relative; /* For overlay positioning */
 }
