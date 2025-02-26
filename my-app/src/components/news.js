@@ -45,7 +45,7 @@ export default class News extends Component {
     this.props.setProgress(10);
     try {
  
-      let url = `http://localhost:5000/news?country=${country}&category=${category}&page=${page}`;
+      let url = `https://react-project-sandy-two.vercel.app/news?country=${country}&category=${category}&page=${page}`;
       let data = await fetch(url);
       this.props.setProgress(50);
 
