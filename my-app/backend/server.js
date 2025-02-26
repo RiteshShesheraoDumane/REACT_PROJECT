@@ -8,24 +8,20 @@ const PORT = process.env.PORT || 5000;
 
 // Enable CORS to allow frontend requests
 app.use(cors());
-
-// API Endpoint to fetch news
 app.get("/news", async (req, res) => {
     try {
-        // Get category, country, and page from query parameters (default values provided)
         const { category = "general", country = "us", page = 1 } = req.query;
-        
-        // Securely fetch API key from environment variables
         const API_KEY = process.env.NEWS_API_KEY;
 
-        // Construct the NewsAPI URL
         const url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${API_KEY}&page=${page}&pageSize=3`;
 
-        // Fetch data from NewsAPI
-        const response = await axios.get(url);
+        const response = await axios.get(url, { responseType: "stream" });
 
-        // Send the data to frontend
-        res.json(response.data);
+        // Set headers for streaming
+        res.setHeader("Content-Type", "application/json");
+
+        // Stream the response to the frontend
+        response.data.pipe(res);
     } catch (error) {
         console.error("Error fetching news:", error);
         res.status(500).json({ error: "Failed to fetch news" });
