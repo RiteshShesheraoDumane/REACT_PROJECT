@@ -1,33 +1,27 @@
 /* General Styling */
 .landing-page {
     height: 100vh; /* Full viewport height */
-    background: url('./image.png') no-repeat center center; /* Background image */
-    background-size: cover; /* Cover the entire area */
-    position: relative; /* For overlay positioning */
+    background: #111; /* Dark background */
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    padding: 20px;
 }
 
-/* Overlay to darken the background and enhance readability */
+/* Overlay for better readability */
 .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
     padding: 20px;
 }
 
 /* Welcome Text */
 .welcome-text {
-    font-size: clamp(2rem, 4vw, 4rem); /* Adjusts between 2rem and 4rem based on screen width */
+    font-size: clamp(2rem, 4vw, 4rem); /* Responsive size */
     font-weight: bold;
     color: white;
     margin-bottom: 10px;
@@ -35,15 +29,13 @@
 
 /* Main Branding */
 .news-nexus {
-    font-size: clamp(3rem, 8vw, 10rem); /* Responsive font size */
+    font-size: clamp(3rem, 8vw, 8rem); /* Adjusts size dynamically */
     font-weight: bold;
     color: rgb(255, 0, 0);
     text-shadow: 
         0 0 15px rgba(0, 0, 0, 0.9), 
         0 0 20px rgba(255, 0, 0, 0.8), 
-        0 0 30px rgba(255, 0, 0, 0.7), 
-        0 0 40px rgba(255, 255, 255, 0.2), 
-        0 0 50px rgba(255, 255, 255, 0.1);
+        0 0 30px rgba(255, 0, 0, 0.7);
     margin-bottom: 15px;
 }
 
@@ -51,7 +43,7 @@
 .blockquote {
     font-size: clamp(1rem, 2vw, 1.5rem);
     color: white;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
     padding: 10px 20px;
     border-radius: 10px;
     display: inline-block;
@@ -82,11 +74,11 @@
 /* Small screens (phones) */
 @media (max-width: 768px) {
     .welcome-text {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
     .news-nexus {
-        font-size: 5rem;
+        font-size: 4rem;
     }
 
     .blockquote {
@@ -102,7 +94,7 @@
 /* Extra Small screens (very small phones) */
 @media (max-width: 480px) {
     .welcome-text {
-        font-size: 1rem;
+        font-size: 1.5rem;
     }
 
     .news-nexus {
@@ -110,12 +102,12 @@
     }
 
     .blockquote {
-        font-size: 0.7rem;
-        padding: 6px 10px;
+        font-size: 0.9rem;
+        padding: 6px 12px;
     }
 
     .btn {
-        font-size: 0.6rem;
+        font-size: 0.8rem;
         padding: 6px 14px;
     }
 }
