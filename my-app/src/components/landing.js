@@ -9,7 +9,7 @@ const LandingPage = ({ onGetStarted }) => {
                 <h1 className="welcome-text">Welcome to</h1>
                 <h1 className="news-nexus">Novanews</h1>
                 <blockquote className="blockquote">
-                    <p>"Empowering You with Knowledge."</p>
+                    <p>"Empowering You with Knowledge..."</p>
                 </blockquote>
                 <button className="btn" onClick={onGetStarted}>Get Started</button>
               
