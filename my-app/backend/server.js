@@ -12,8 +12,8 @@ app.get("/news", async (req, res) => {
     try {
         const { category = "general", country = "us", page = 1 } = req.query;
         const API_KEY = process.env.NEWS_API_KEY;
-
-        const url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${API_KEY}&page=${page}&pageSize=13`;
+        const pageSize = 5;
+        const url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${API_KEY}&page=${page}&pageSize=${pageSize}`;
 
         const response = await axios.get(url, { responseType: "stream" });
 
