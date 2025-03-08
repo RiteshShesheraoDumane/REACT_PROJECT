@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import NewsItem from "./newsitem";
 import Spinner from "./spinner";
+
 import InfiniteScroll from "react-infinite-scroll-component";
 
 export default class News extends Component {
@@ -42,9 +43,9 @@ export default class News extends Component {
 
     this.setState({ loading: true, error: null }); // Reset loading state
     this.props.setProgress(10);
-
     try {
-      let url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=95564f4da2254849a7c07a66445ae3e6&page=${page}&pageSize=${pageSize}`;
+ 
+      let url = `https://react-project-sandy-two.vercel.app/news?country=${country}&category=${category}&page=${page}`;
       let data = await fetch(url);
       this.props.setProgress(50);
 

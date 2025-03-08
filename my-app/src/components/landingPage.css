@@ -1,90 +1,124 @@
+/* General Styling */
 .landing-page {
     height: 100vh; /* Full viewport height */
-    background: #000; /* Background color */
-    position: relative; /* For overlay positioning */
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    background: #111; /* Dark background */
     display: flex;
-    flex-direction: column; /* Stack elements vertically */
     justify-content: center;
-    align-items: center; /* Center content */
-    text-align: center; /* Center text */
+    align-items: center;
+    position: relative;
+    padding: 20px;
 }
 
+/* Overlay for better readability */
+.overlay {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Welcome Text */
 .welcome-text {
-    font-size: 4rem; /* Large font size */
-    font-weight: bold; /* Bold text */
-    color: white; /* White text */
-    margin-bottom: 20px; /* Spacing below */
+    font-size: clamp(2rem, 4vw, 4rem); /* Responsive size */
+    font-weight: bold;
+    color: white;
+    margin-bottom: 10px;
 }
 
+/* Main Branding */
 .news-nexus {
-    font-size: 6rem; /* Large font size for NewsNexus */
-    font-weight: bold; /* Bold text */
-    color: #FFD700; /* Gold color for effect */
-    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8), /* 3D effect */
-                 -1px -1px 3px rgba(0, 0, 0, 0.5),
-                 1px 1px 3px rgba(0, 0, 0, 0.5);
-    margin-bottom: 20px; /* Spacing below */
-}
-
-.blockquote {
-    font-size: 1.5rem; /* Size for quote */
-    color: white; /* Color for quote */
-    margin-bottom: 20px; /* Spacing below */
-}
-
-.btn {
-    font-size: 1.2rem; /* Button text size */
-    padding: 10px 20px; /* Padding for button */
-    background-color: #007bff; /* Button color */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners */
-    color: white; /* White text color */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s; /* Smooth transition */
-}
-
-.btn:hover {
-    background-color: #0056b3; /* Darker shade on hover */
-}
-.news-nexus{
-    color: rgb(241, 109, 109);
-    font-size: 150px;
-    font-family: emoji;
-}
-.landing-page {
-    height: 100vh; /* Full viewport height */
-    background: url('./image.png') no-repeat center center; /* Set background image */
-    background-size: cover; /* Cover the entire area */
-    position: relative; /* For overlay positioning */
-}
-.news-nexus {
-    font-size: 10rem; /* Large font size for NewsNexus */
-    font-weight: bold; /* Bold text */
-    color: rgb(255, 0, 0); /* Main text color */
+    font-size: clamp(3rem, 8vw, 8rem); /* Adjusts size dynamically */
+    font-weight: bold;
+    color: rgb(255, 0, 0);
     text-shadow: 
-        0 0 15px rgba(0, 0, 0, 0.9), /* Strong deep shadow */
-        0 0 20px rgba(255, 0, 0, 0.8), /* Deep red glow */
-        0 0 30px rgba(255, 0, 0, 0.7), /* Brighter red glow */
-        0 0 40px rgba(255, 255, 255, 0.2), /* Soft white edge */
-        0 0 50px rgba(255, 255, 255, 0.1); /* Fainter soft edge */
+        0 0 15px rgba(0, 0, 0, 0.9), 
+        0 0 20px rgba(255, 0, 0, 0.8), 
+        0 0 30px rgba(255, 0, 0, 0.7);
+    margin-bottom: 15px;
 }
-.btn:hover {
-    background-color: #0056b3; /* Darken the button on hover */
-}
+
+/* Quote Styling */
 .blockquote {
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-    padding: 10px 20px; /* Padding around the quote */
-    border-radius: 10px; /* Rounded corners */
-    display: inline-block; /* Fit the background to the content */
-    margin: 20px 0; /* Add some margin for spacing */
-    font-style: italic; /* Italic style for the quote */
-    font-size: 1.5rem; /* Increase font size for emphasis */
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: inline-block;
+    font-style: italic;
+    margin: 10px 0;
+}
+
+/* Button Styling */
+.btn {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Button Hover & Active Effect */
+.btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* RESPONSIVE DESIGN */
+
+/* Small screens (phones) */
+@media (max-width: 768px) {
+    .welcome-text {
+        font-size: 2rem;
+    }
+
+    .news-nexus {
+        font-size: 4rem;
+    }
+
+    .blockquote {
+        font-size: 1rem;
+    }
+
+    .btn {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+}
+
+/* Extra Small screens (very small phones) */
+@media (max-width: 480px) {
+    .welcome-text {
+        font-size: 1.5rem;
+    }
+
+    .news-nexus {
+        font-size: 3rem;
+    }
+
+    .blockquote {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+
+    .btn {
+        font-size: 0.8rem;
+        padding: 6px 14px;
+    }
+}
+
+/* Medium screens (tablets) */
+@media (max-width: 1024px) {
+    .news-nexus {
+        font-size: 6rem;
+    }
+
+    .btn {
+        font-size: 1rem;
+    }
 }
