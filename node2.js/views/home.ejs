@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <title>Home</title>
+</head>
+<body>
+
+<%- include('./partials/navbar') %>
+
+<div class="container my-4">
+    <h2>All Blogs</h2>
+    <div class="row">
+        <% blogs.forEach(blog => { %>
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="<%= blog.coverimageurl %>" class="card-img-top" alt="Cover Image">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= blog.title %></h5>
+                        <p class="card-text"><%= blog.body.substring(0, 100) %>...</p>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</div>
+
+<%- include('./partials/script') %>
+
+</body>
+</html>

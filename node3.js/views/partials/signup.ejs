@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <title>Signup</title>
+</head>
+<body>
+    <%- include('./partials/navbar') %>
+
+    <div class="container my-4">
+        <% if (success) { %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
+
+        <% if (error) { %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+        <% } %>
+
+        <form method="POST" action="/user/signup">
+            <div class="mb-3">
+                <label for="exampleInputFullName" class="form-label">Full Name</label>
+                <input type="text" name="fullName" class="form-control" id="exampleInputFullName" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" name="email" class="form-control" id="exampleInputEmail1" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" id="exampleInputPassword1" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Signup</button>
+        </form>
+    </div>
+
+    <%- include('./partials/script') %>
+</body>
+</html>
